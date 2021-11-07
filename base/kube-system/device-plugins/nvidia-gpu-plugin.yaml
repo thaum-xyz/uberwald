@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nvidia-device-plugin-daemonset
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: nvidia-device-plugin-ds
+  template:
+    metadata:
+      labels:
+        name: nvidia-device-plugin-ds
+    spec:
+      priorityClassName: "system-node-critical"
+      runtimeClassName: "nvidia"
+      containers:
+      #- image: nvidia/k8s-device-plugin:devel-ubuntu20.04
+      #- image: nvidia/k8s-device-plugin@sha256:e411f535ae6276acd1a5bf50dcd8a9afbead1e2d647801678e4ef4eb93629431
+      - image: nvidia/k8s-device-plugin:v0.9.0
+        #args: ["--fail-on-init-error=true"]
+        name: nvidia-device-plugin-ctr
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        resources:
+          requests:
+            cpu: 50m
+            memory: 10Mi
+          limits:
+            cpu: 50m
+            memory: 10Mi
+        volumeMounts:
+          - name: device-plugin
+            mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+      nodeSelector:
+        gpu.infra/nvidia: "true"
+        kubernetes.io/arch: "amd64"
