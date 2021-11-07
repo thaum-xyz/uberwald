@@ -1,0 +1,26 @@
+---
+name: prom-rules
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Import environment variables
+        run: cat ".github/env" >> $GITHUB_ENV
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '${{ env.golang-version }}'
+      - run: go install github.com/brancz/gojsontoyaml@latest
+      #- run: go get -u github.com/prometheus/prometheus/cmd/promtool
+      - name: Download latest release of promtool
+        run: |
+          VERSION=$(curl -s https://api.github.com/repos/prometheus/prometheus/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}' | sed 's/v//')
+          curl -s -L "https://github.com/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-amd64.tar.gz" | tar -zxf - -C "${GITHUB_WORKSPACE}/" --strip-components 1 "prometheus-${VERSION}.linux-amd64/promtool"
+      - run: PATH="${PATH}:${GITHUB_WORKSPACE}" ./hack/verify-prometheus-rules.sh

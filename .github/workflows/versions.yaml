@@ -1,0 +1,41 @@
+name: Upgrade to latest versions
+
+on:
+  schedule:
+    - cron: '15 */6 * * *'
+  #push:
+  #  branch: main
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Import environment variables
+      run: cat ".github/env" >> $GITHUB_ENV
+    - uses: actions/setup-go@v2
+      with:
+        go-version: '${{ env.golang-version }}'
+    - name: Get jsonnet
+      run: go install github.com/google/go-jsonnet/cmd/jsonnet@${{ env.jsonnet-version }}
+    - name: Get jsonnet-bundler
+      run: go install github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@${{ env.jb-version }}
+    - name: Get yamlfmt
+      run: go install github.com/devopyio/yamlfmt@latest
+    - name: Upgrade
+      run: |
+        export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+        make upgrade
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: "[bot] Automated version update"
+        title: "[bot] Automated version update"
+        body: |
+          This is an automated version update performed from CI on behalf of @paulfantom.
+
+          Configuration of the workflow is located in `.github/workflows/versions.yaml`
+        assignees: paulfantom
+        labels: enhancement
+        branch: automated-updates
+        delete-branch: true
+        token: ${{ secrets.PAT_SECRET }}
