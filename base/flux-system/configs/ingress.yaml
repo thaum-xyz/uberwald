@@ -9,7 +9,7 @@ metadata:
   namespace: flux-system
 spec:
   rules:
-  - host: flux.ankhmorpork.thaum.xyz
+  - host: flux.uberwald.thaum.xyz
     http:
       paths:
       - backend:
@@ -21,5 +21,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - flux.ankhmorpork.thaum.xyz
+    - flux.uberwald.thaum.xyz
     secretName: flux-tls
