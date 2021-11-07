@@ -10,5 +10,5 @@ spec:
   force: true
   sourceRef:
     kind: GitRepository
-    name: uberwald
+    name: ankhmorpork
   validation: client
