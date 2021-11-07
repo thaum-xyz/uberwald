@@ -6,5 +6,5 @@ metadata:
 spec:
   interval: 60s
   ref:
-    branch: master
+    branch: main
   url: https://github.com/thaum-xyz/uberwald
