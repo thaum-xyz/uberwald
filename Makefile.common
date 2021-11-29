@@ -58,6 +58,9 @@ validate: $(MANIFESTS_DIR) $(SCHEMAS_DIR)
 	-summary \
 	$(MANIFESTS_DIR)
 
+.PHONY: apply
+apply: $(MANIFESTS_DIR)
+	kubectl apply -Rf $(MANIFESTS_DIR)
 
 .PHONY: help
 help:  ## Displays help.
