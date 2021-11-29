@@ -3,7 +3,7 @@
 image: hkotel/mealie:v0.5.3  # application-image-from-github: hay-kot/mealie
 version: 0.5.3  # application-version-from-github: hay-kot/mealie
 namespace: recipe
-domain: recipe.uberwald.thaum.xyz
+domain: recipe.krupa.net.pl
 resources:
   requests:
     cpu: 54m

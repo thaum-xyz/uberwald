@@ -15,7 +15,7 @@ metadata:
   namespace: recipe
 spec:
   rules:
-  - host: recipe.uberwald.thaum.xyz
+  - host: recipe.krupa.net.pl
     http:
       paths:
       - backend:
@@ -27,5 +27,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - recipe.uberwald.thaum.xyz
+    - recipe.krupa.net.pl
     secretName: mealie-tls
