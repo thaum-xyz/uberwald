@@ -402,7 +402,7 @@ spec:
               memory: 190Mi
       nodeSelector:
         kubernetes.io/os: linux
-        network.infra/type: "fast"
+        # network.infra/type: "fast"
         # kubernetes.io/arch: "amd64"
       serviceAccountName: ingress-nginx
       terminationGracePeriodSeconds: 300
