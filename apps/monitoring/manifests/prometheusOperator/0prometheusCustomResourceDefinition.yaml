@@ -2,7 +2,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.4.1
+    controller-gen.kubebuilder.io/version: v0.6.2
   creationTimestamp: null
   name: prometheuses.monitoring.coreos.com
 spec:
@@ -4257,6 +4257,14 @@ spec:
                     bearerTokenFile:
                       description: File to read bearer token for remote read.
                       type: string
+                    headers:
+                      additionalProperties:
+                        type: string
+                      description: Custom HTTP headers to be sent along with each
+                        remote read request. Be aware that headers that are set by
+                        Prometheus itself can't be overwritten. Only valid in Prometheus
+                        versions 2.26.0 and newer.
+                      type: object
                     name:
                       description: The name of the remote read queue, must be unique
                         if specified. The name is used in metrics and logging in order
