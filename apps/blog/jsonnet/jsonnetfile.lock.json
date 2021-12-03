@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "dependencies": [
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/thaum-xyz/jsonnet-libs.git",
+          "subdir": "apps/ghost"
+        }
+      },
+      "version": "4724aa3682d18d347f1d6c8cacc24839c7057e14",
+      "sum": "awpLFW3B43uGpKwBt7Lzj7hPB462KWDTfmGdQBOOacQ="
+    }
+  ],
+  "legacyImports": false
+}
