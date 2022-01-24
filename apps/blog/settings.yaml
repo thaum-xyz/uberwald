@@ -10,9 +10,11 @@ resources:
   limits:
     cpu: 300m
     memory: 500Mi
-pvcSpec:
-  storageClassName: "civo-volume"
-  accessModes: ['ReadWriteOnce']
-  resources:
-    requests:
-      storage: '1Gi'
+storage:
+  name: data
+  pvcSpec:
+    storageClassName: "civo-volume"
+    accessModes: ['ReadWriteMany']
+    resources:
+      requests:
+        storage: '1Gi'
