@@ -13,11 +13,6 @@ local all = mealie(config) + {
     namespace: config.namespace,
     labels: $._config.commonLabels,
   }, config.envs),
-  pvc+: {
-    spec+: {
-      storageClassName: config.storageClassName,
-    },
-  },
   ingress+: {
     metadata+: {
       labels+: {

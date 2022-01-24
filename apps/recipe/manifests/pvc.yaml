@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: mealie
     app.kubernetes.io/part-of: mealie
     app.kubernetes.io/version: 0.5.3
-  name: mealie
+  name: data
   namespace: recipe
 spec:
   accessModes:

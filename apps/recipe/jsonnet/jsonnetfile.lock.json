@@ -8,8 +8,8 @@
           "subdir": "apps/mealie"
         }
       },
-      "version": "c1fff9d206be27725a8149cff99b8e3bf01d5c06",
-      "sum": "tMuOeg0fHBDNNbIdqrX1eIDlTPnOoFJ4zM6Gh+g1xRQ="
+      "version": "ffc371f2fd778115411d75c61b7f42ef85238736",
+      "sum": "WN7Hi4fwt8eauf+AotsJg9cmGr6EaiVR+JQqdoVyDOo="
     },
     {
       "source": {
@@ -18,7 +18,7 @@
           "subdir": "utils"
         }
       },
-      "version": "c1fff9d206be27725a8149cff99b8e3bf01d5c06",
+      "version": "ffc371f2fd778115411d75c61b7f42ef85238736",
       "sum": "fpU9+wurrgNrnBmnPHYehqp3R5TqVWVdg8s8akBRmYM="
     }
   ],
