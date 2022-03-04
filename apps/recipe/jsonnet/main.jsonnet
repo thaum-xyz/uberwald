@@ -24,6 +24,33 @@ local all = mealie(config) + {
       },
     },
   },
+  deployment+: {
+    spec+: {
+      template+: {
+        spec+: {
+          containers: std.map(function(c)
+            c {
+              env+: [
+                {
+                  name: "RECIPE_DISABLE_COMMENTS",
+                  value: "true",
+                },
+                {
+                  name: "AUTO_BACKUP_ENABLED",
+                  value: "true",
+                },
+                {
+                  name: "API_DOCS",
+                  value: "false",
+                },
+              ],
+            },
+            super.containers,
+          ),
+        }
+      }
+    }
+  }
 };
 
 { [name + '.yaml']: std.manifestYamlDoc(all[name]) for name in std.objectFields(all) }

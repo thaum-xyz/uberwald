@@ -27,6 +27,12 @@ spec:
       - env:
         - name: DB_TYPE
           value: sqlite
+        - name: RECIPE_DISABLE_COMMENTS
+          value: "true"
+        - name: AUTO_BACKUP_ENABLED
+          value: "true"
+        - name: API_DOCS
+          value: "false"
         envFrom:
         - secretRef:
             name: envs
