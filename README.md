@@ -1,5 +1,12 @@
 # Uberwald
 
+## DEPRECATED
+
+The cluster has been decommisioned. Applications running in the cluster were removed or migrated:
+- `news` has been removed completely as `news.krupa.net.pl` wasn't used
+- `blog` was converted to a simple landing page hosted on netlify (https://github.com/paulfantom/landing)
+- `recipe` was moved to ankhmorpork cluster
+
 ## What is it?
 
 This is a part of [@paulfantom](https://github.com/paulfantom) personal homelab. It is on purpose made public to be used as:
